@@ -2,6 +2,7 @@ import React from 'react';
 import Info from './components/info';
 import Form from './components/form';
 import Weather from './components/weather';
+import ShinningText from './components/shinningText';
 
 const API_KEY = '88ec93c8bc578fb7e09367b86bce7577';
 
@@ -59,26 +60,26 @@ class App extends React.Component {
   render () {
     return(
       <div className = "wrapper">
+        <div id ="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
         <div className = "main">
-          <div className = "container">
-            <div className = "row">
-              <div className = "col-sm-5 info">
-                <Info />
-              </div>
-              <div className = "col-sm-7 form">
-                <Form weatherMethod={this.gettingWeather}/>
-                <Weather 
-                  temp={this.state.temp}
-                  city={this.state.city}
-                  country={this.state.country}
-                  pressure={this.state.pressure}
-                  sunrise={this.state.sunrise}
-                  sunset={this.state.sunset}
-                  error={this.state.error}
-                />
-              </div>
-            </div>
+          <div className = "info">
+            <Info />
           </div>
+          <div className = "mainForm">
+            <Form weatherMethod={this.gettingWeather}/>
+            <Weather 
+              temp={this.state.temp}
+              city={this.state.city}
+              country={this.state.country}
+              pressure={this.state.pressure}
+              sunrise={this.state.sunrise}
+              sunset={this.state.sunset}
+              error={this.state.error}
+            />
+          </div>
+          <ShinningText />
         </div>
       </div>
     )

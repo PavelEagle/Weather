@@ -5,117 +5,170 @@ body {
 }
 
 .wrapper {
+  position: relative;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background: rgb(0, 0, 0);
+} 
 
-  background: rgba(45,176,224,1);
-  background: -moz-linear-gradient(45deg, rgba(45,176,224,1) 0%, rgba(96,40,168,1) 100%);
-  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(45,176,224,1)), color-stop(100%, rgba(96,40,168,1)));
-  background: -webkit-linear-gradient(45deg, rgba(45,176,224,1) 0%, rgba(96,40,168,1) 100%);
-  background: -o-linear-gradient(45deg, rgba(45,176,224,1) 0%, rgba(96,40,168,1) 100%);
-  background: -ms-linear-gradient(45deg, rgba(45,176,224,1) 0%, rgba(96,40,168,1) 100%);
-  background: linear-gradient(45deg, rgba(45,176,224,1) 0%, rgba(96,40,168,1) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2db0e0', endColorstr='#6028a8', GradientType=1 );
-}
 
 .main {
-  height: 55vh;
-  background: #2a6bb1;
-  box-shadow: 0px 2px 80px -20px rgba(0,0,0,0.5);
-  width: 60%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   margin: 0 auto;
 }
 
-.info {
-  height: 55vh;
-  background: url("img/polygon.jpg") center center no-repeat;
-  background-blend-mode: multiply;
-  background-color: #484747;
-  border: 2px solid #1f1f1f;
-  border-right: 2px solid #131e29;
-  background-size: cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #000;
+.mainForm {
+  width: 100%;
+  height: 40%;
 }
+
+
 
 .form {
   height: 55vh;
-  padding-top: 100px;
-  padding-left: 50px;
-  border-top: 2px solid #113a65;
-  border-bottom: 2px solid #113a65;
-  border-right: 2px solid #113a65;
+  margin-right: 100px;
 }
 
 input[type="text"] {
   background-color: transparent;
   border: 0;
-  border-bottom: solid 2px #113a65;
+  border-bottom: solid 2px #8d6801;
   width: 50%;
   padding-bottom: 4px;
   color: #fff;
   font-weight: lighter;
   margin-bottom: 30px;
   margin-right: 20px;
+  margin-left: 250px;
   font-size: 20px;
   outline: none;
 }
 
 input::-webkit-input-placeholder {
-  color: #103a65;
+  color: #644a01;
 }
 
 input::-moz-placeholder {
-  color: #103a65;
+  color: #8d6801;
 }
 
 button {
-  border: 2px solid #103a65;
-  border-bottom: 4px solid #103a65;
-  padding: 8px 20px;
-  margin: 0 2px;
-  border-radius: 2px;
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #8d6801;
+  font-size: 20px;
+  background: #111;
   cursor: pointer;
-  background-color: #235d9c;
-  color: #fff;
-  outline: none!important;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
 }
 
-button:hover {
-  border-bottom: 2px solid #103a65;
-  position: relative;
-  top: 2px;
+button:before {
+  content: '';
+    background: rgba(255, 255, 255, 0.863);
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 2s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
 }
 
 button:active {
-  border-bottom: 2px solid transparent;
-  border-color: transparent;
-  position: relative;
-  top: 2px;
+  color: #000
 }
 
-.info h2 {
-  font-size: 3em;
-  color: #fff;
+button:active:after {
+  background: transparent;
 }
 
-.info p {
-  color: #e4e4e4;
+button:hover:before {
+  opacity: 1;
+}
+
+button:after {
+  z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #111;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+
+@keyframes glowing {
+  0% { background-color: rgba(255, 255, 255,1); }
+  50% { background-color: rgba(255, 255, 255,0); }
+  100% { background-color: rgba(255, 255, 255,1); }
+}
+
+.info h1 {
+  color: #8d6801;
   font-weight: bold;
+  transform: perspective(300px) rotateX(25deg);
 }
 
-.infoWeath {
-  width: 60%;
+.infoWeather {
+  position: relative;
+  top:100px;
   font-size: 20px;
-  color: #fff;
+  color: #8d6801;
+  text-align: center;
+  transform-origin: 50% 100%;
+  transform: perspective(300px) rotateX(25deg);
+  animation: scrolling linear 20s infinite;
+}
+
+@keyframes scrolling {
+  0% {
+    top: 100px;
+  }
+  100% {
+    top: -100px;
+  }
 }
 
 .error {
-  color: #041f3c;
+  color: red;
   font-weight: bold;
+  text-align: center;
+}
+
+.shinningText {
+  top: 0px;
+  color: #8d6801;
+  letter-spacing: 4px;
+  overflow: hidden;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  animation: animate 3s linear infinite;
+  background-size: 80%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes animate {
+  0%{
+    background-position: -500%;
+  }
+  100%{
+    background-position: 500%;
+  }
 }

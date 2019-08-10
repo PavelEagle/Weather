@@ -2,9 +2,8 @@ import React from 'react';
 
 
 const Info = () => (           
-    <div>
-        <h2>Погодное приложение</h2>
-        <p>Узнайте погоду!</p>
+    <div className="info">
+        <h1>Узнайте погоду!</h1>
     </div>
 )
 
